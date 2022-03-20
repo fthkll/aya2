@@ -1,24 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import SubForm from './SubForm';
+import ToDoList from './ToDoList';
+import { Container, Row, Col } from 'shards-react';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Row>
+        <Col sm={{ size: 6, order: 3, offset: 3 }}>
+          <SubForm />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
