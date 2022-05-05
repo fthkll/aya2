@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const register = require('./routes/register.js')
+const restaurants = require('./routes/restaurants.js')
 
 require('dotenv').config();
 
@@ -10,7 +12,11 @@ const port = 5000;
 app.use(cors());
 app.use(express.json());
 
-const uri = `mongodb+srv://palmiye:sevici77@ayaform.ya1ul.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+app.use("/denemev1", restaurants)
+
+app.use("*", (req, res) => res.status(404).json({ error: "no access here"}))
+
+const uri = `mongodb+srv://palmiye:sevici77@ayaform.ya1ul.mongodb.net/sample_restaurants?retryWrites=true&w=majority`;
 mongoose.connect(uri, { useNewUrlParser: true })
     .then( () => {
         console.log('Connected to database ')

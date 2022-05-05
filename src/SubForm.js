@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import Button from "@mui/material/Button"
-import {
-  Form,
-  FormInput,
-  FormGroup,
-  FormSelect,
-  FormTextarea,
-} from "shards-react";
-import logo from "./logo.png";
+import logo from "./logo.jpeg";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css";
@@ -17,7 +9,7 @@ const LABEL_FIELD_MAP = {
     /// burasi da refaktor edilebilir
   name: {
     label: "Ad Soyad",
-    placeholder: "orn.: Alper Demirci",
+    placeholder: "Isim Soyisim",
   },
   age: {
     label: "Dogum Tarihi",
@@ -29,7 +21,7 @@ const LABEL_FIELD_MAP = {
   },
   email: {
     label: "Mail Adresiniz",
-    placeholder: "orn.: aya@estetik.com",
+    placeholder: "orn.: aya@gmail.com",
   },
 };
 
@@ -46,27 +38,27 @@ const SubForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(person);
-    console.log(e);
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <img src={logo} alt="logo" className="logo" />
       <h2 className="header">Aya Estetik Form</h2>
       {INPUT_FIELDS.map((field) => {
         return (
-          <FormGroup>
+          <div>
             <label htmlFor={field}>{LABEL_FIELD_MAP[field]["label"]}</label>
-            <FormInput
+            <input
               onChange={(e) =>
                 setPerson({ ...person, [field]: e.target.value })
               }
+              type="text"
               label={field}
               id={field}
               value={person[field]}
               placeholder={LABEL_FIELD_MAP[field]["placeholder"]}
             />
-          </FormGroup>
+          </div>
         );
       })}
       {/* <FormGroup>
@@ -99,9 +91,9 @@ const SubForm = () => {
           placeholder="0 5xx xxxxxxx"
         />
       </FormGroup> */}
-      <FormGroup>
+      <div>
         <label htmlFor="service">Uygulama</label>
-        <FormSelect
+        <select
           id="service"
           onChange={(e) => setPerson({ ...person, service: e.target.value })}
         >
@@ -110,22 +102,23 @@ const SubForm = () => {
           <option value="botox" disabled>
             Botox
           </option>
-        </FormSelect>
-      </FormGroup>
-      <FormGroup>
+        </select>
+      </div>
+      <div>
         <label htmlFor="msg">Not</label>
-        <FormTextarea
+        <input
           className="msg"
           onChange={(e) => setPerson({ ...person, msg: e.target.value })}
           label="Message"
           id="msg"
+          type="text"
           value={person.msg}
           placeholder=""
         />
-      </FormGroup>
+      </div>
 
-      <Button type="submit" variant="outlined">Gonder</Button>
-    </Form>
+      <button type="submit" variant="outlined">Gonder</button>
+    </form>
   );
 };
 export default SubForm;

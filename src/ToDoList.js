@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Button, FormGroup, FormInput, Form } from "shards-react";
 
 const ToDoList = () => {
   const [list, setList] = useState([]);
@@ -20,21 +19,20 @@ const ToDoList = () => {
   };
   
   return (
-    <Form>
-      <FormGroup>
-        <FormInput
+    <form>
+        <input
+          type="text"
           onChange={(e) => {setTask(e.target.value);console.log(task)}}
           placeholder="Enter your task..."
           value={task}
         />
-      </FormGroup>
-      <Button onClick={handleSubmit}>Ekle</Button>
+      <button onClick={handleSubmit}>Ekle</button>
       {list.map((item) => {
           return (
               <h1>{item}</h1>
           );
       })}
-    </Form>
+    </form>
   );
 };
 
