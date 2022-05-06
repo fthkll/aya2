@@ -9,19 +9,19 @@ const LABEL_FIELD_MAP = {
     /// burasi da refaktor edilebilir
   name: {
     label: "Ad Soyad",
-    placeholder: "Isim Soyisim",
+    placeholder: "Ad Soyad",
   },
   age: {
-    label: "Dogum Tarihi",
+    label: "Doğum Tarihi",
     placeholder: "Sadece yil yaziniz",
   },
   gsm: {
     label: "Telefon",
-    placeholder: "orn.: 05xx xxx xx xx",
+    placeholder: "örn.: 05xx xxx xx xx",
   },
   email: {
     label: "Mail Adresiniz",
-    placeholder: "orn.: aya@gmail.com",
+    placeholder: "örn.: ...@gmail.com",
   },
 };
 
@@ -43,7 +43,7 @@ const SubForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <img src={logo} alt="logo" className="logo" />
-      <h2 className="header">Aya Estetik Form</h2>
+      <h2 className="header">Aya Estetik</h2>
       {INPUT_FIELDS.map((field) => {
         return (
           <div>
@@ -78,7 +78,7 @@ const SubForm = () => {
           label="Email"
           id="email"
           value={person.email}
-          placeholder="ornek@ayaestetik.com"
+          placeholder="örn.: ...@gmail.com"
         />
       </FormGroup>
       <FormGroup>
@@ -97,7 +97,11 @@ const SubForm = () => {
           id="service"
           onChange={(e) => setPerson({ ...person, service: e.target.value })}
         >
-          <option value="epilasyon">Epilasyon</option>
+          <option value="lazer epilasyon">Lazer Epilasyon</option>
+          <option value="solaryum">Solaryum</option>
+          <option value="kirpik lifting">Kirpik Lifting</option>
+          <option value="G5 masaj">G5 Masaj</option>
+          <option value="cilt bakimi">Cilt Bakimi</option>
           <option value="cilt bakimi">Cilt Bakimi</option>
           <option value="botox" disabled>
             Botox
